@@ -18,6 +18,7 @@ class FordShowroom::Scraper
     cars.each do |car|
       @@car_info << car.css(".m-text-default span").text
     end
+    @@car_info
   end
 
   def self.all_car_info

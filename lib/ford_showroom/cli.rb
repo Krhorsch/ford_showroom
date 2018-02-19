@@ -3,17 +3,21 @@ class FordShowroom::CLI
 
   def call
     puts "Hello! Welcome to Ford!"
-    puts "Please select a car you would like to learn more about"
+    puts "Please select a vehicle you would like to learn more about"
     FordShowroom::Scraper.vehicle
     input = gets.strip
     car_selection(input)
-    puts "When you are done reading please type 'done'"
-    call
+    puts "If you would like to learn about other vehicles type 'more'"
+    input = gets.strip
+    if input == "more"
+      call
+    else
+      puts "Thanks for stopping by, see you again soon!"
+    end
   end
 
   def car_selection(input)
-    if input.to_i - 1 == 0
-      puts "#{FordShowroom::Scraper.all_car_info}"
-    end
+    index = input.to_i - 1
+    puts "#{FordShowroom::Scraper.vehicle_info[index]}"
   end
 end
