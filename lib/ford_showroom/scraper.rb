@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'pry'
 class FordShowroom::Scraper
+  @@car_info = []
   def self.vehicle
     doc = Nokogiri::HTML(open("https://www.ford.com/new-cars/?gnav=footer-all%20vehicles"))
     cars = doc.css("div.single-static-feature-text h2 b").text
@@ -11,11 +12,15 @@ class FordShowroom::Scraper
     end
   end
 
-  def vehicle_info
+  def self.vehicle_info
     doc = Nokogiri::HTML(open("https://www.ford.com/new-cars/?gnav=footer-all%20vehicles"))
     cars = doc.css("div.single-static-feature-text")
     cars.each do |car|
-      puts "#{car.css(".m-text-default span").text}"
+      @@car_info << car.css(".m-text-default span").text
     end
+  end
+
+  def self.all_car_info
+    @@car_info
   end
 end
