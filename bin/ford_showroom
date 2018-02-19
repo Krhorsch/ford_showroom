@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './lib/ford_showroom'
+
+FordShowroom::CLI.new.call
