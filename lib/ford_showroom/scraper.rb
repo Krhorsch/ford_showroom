@@ -13,3 +13,4 @@ class FordShowroom::Scraper
       new_car.price = x.css(".m-text-default .starting-price").text
     end
   end
+end

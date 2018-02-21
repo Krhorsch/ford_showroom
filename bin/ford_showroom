@@ -2,4 +2,4 @@
 
 require './lib/ford_showroom'
 
-FordShowroom::Scraper.new.vehicle
+FordShowroom::CLI.new.call

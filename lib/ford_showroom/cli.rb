@@ -4,7 +4,7 @@ class FordShowroom::CLI
   def call
     puts "Hello! Welcome to Ford!"
     puts "Please select a vehicle you would like to learn more about:"
-    FordShowroom::Scraper.vehicle
+    FordShowroom::Car.display_cars
     binding.pry
     input = gets.strip
     car_selection(input)
@@ -19,6 +19,6 @@ class FordShowroom::CLI
 
   def car_selection(input)
     index = input.to_i - 1
-    puts "#{FordShowroom::Scraper.vehicle_info[index]}"
+    puts "#{FordShowroom::Car.[index]}"
   end
 end
