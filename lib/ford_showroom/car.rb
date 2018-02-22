@@ -12,13 +12,6 @@ class FordShowroom::Car
     @@all_cars
   end
 
-  def car_selection(input)
-    index = input.to_i - 1
-    selection = FordShowroom::Car.all_cars[index]
-    puts "#{selection.price}"
-    puts "#{selection.info}"
-  end
-
   def save
     @@all_cars << self
   end
