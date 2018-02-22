@@ -1,6 +1,8 @@
 require 'open-uri'
 require 'nokogiri'
 require 'pry'
+require 'capybara/poltergeist'
+
 class FordShowroom::Scraper
 
   def self.vehicle
@@ -10,7 +12,8 @@ class FordShowroom::Scraper
       new_car = FordShowroom::Car.new
       new_car.name = x.css("b").text
       new_car.info = x.css("span.description").text
-      new_car.price = x.css(".m-text-default .starting-price").text
+      new_car.price = x.css(".price-value").text
+      new_car.save
     end
   end
 end
